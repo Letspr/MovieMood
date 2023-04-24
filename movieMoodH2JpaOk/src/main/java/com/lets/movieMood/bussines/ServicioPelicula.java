@@ -1,3 +1,4 @@
+
 package com.lets.movieMood.bussines;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import com.lets.movieMood.exceptions.ServicioException;
 
 
 
-public interface ServicioPelicula {
+public interface ServicioPelicula  {
 	
 	List<Pelicula> listPeliculas() throws ServicioException;
 
