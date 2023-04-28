@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,12 +22,24 @@ public class ControladorPeliculas {
 	@Autowired
 	ServicioPelicula servicio;
 	
+		
 	@GetMapping("/cartelera")
 	public String paginaPeliculas (Model model) throws ServicioException {
 		List<Pelicula> peliculas= servicio.listPeliculas();
 		model.addAttribute("peliculas",peliculas);
 		return "peliculas";
 		
+	}
+	
+	@GetMapping("/{id}")
+	// path variable porque no puede coincidir la url
+	public String paginaPelicula(@PathVariable Integer id,Model model) throws Exception {
+		// Model model es un objeto que nos da Spring para meter atributos en la vista. Va a ser independiente para cada método.
+		// Nuevo para cada método. Son maleteros diferentes.
+		Pelicula pelicula = servicio.conseguirPelicula(id);
+		
+		model.addAttribute("pelicula", pelicula);	
+		return "pelicula";
 	}
 	
 	
