@@ -1,5 +1,5 @@
 
-package com.lets.movieMood.bussines;
+package com.lets.movieMood.services.interfaces;
 
 import java.util.List;
 

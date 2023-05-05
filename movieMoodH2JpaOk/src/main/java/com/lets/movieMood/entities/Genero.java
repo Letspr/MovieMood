@@ -39,5 +39,11 @@ public class Genero {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Genero [id=" + id + ", nombre=" + nombre + "]";
+	}
+
+	
 	
 }

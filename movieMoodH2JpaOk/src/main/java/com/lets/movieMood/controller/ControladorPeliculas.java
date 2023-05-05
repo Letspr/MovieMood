@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lets.movieMood.bussines.ServicioPelicula;
 import com.lets.movieMood.entities.Pelicula;
 import com.lets.movieMood.exceptions.ServicioException;
+import com.lets.movieMood.services.interfaces.ServicioPelicula;
 
 @Controller
 @RequestMapping("/")
-public class ControladorPeliculas {
+public class ControladorPeliculas extends ControladorError {
 	
 	@Autowired
 	ServicioPelicula servicio;

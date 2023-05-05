@@ -1,4 +1,4 @@
-package com.lets.movieMood.bussines;
+package com.lets.movieMood.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import com.lets.movieMood.entities.Pelicula;
 import com.lets.movieMood.exceptions.CodeError;
 import com.lets.movieMood.exceptions.ServicioException;
 import com.lets.movieMood.repositories.PeliculaRepository;
+import com.lets.movieMood.services.interfaces.ServicioPelicula;
 
 @Service
 public class ServicioPeliculaImpl implements ServicioPelicula{
@@ -19,7 +20,7 @@ public class ServicioPeliculaImpl implements ServicioPelicula{
 	Logger log = LoggerFactory.getLogger(ServicioPeliculaImpl.class);
 	
 	@Autowired
-	PeliculaRepository repository;
+	PeliculaRepository peliculaRepository;
 
 	@Override
 	public List<Pelicula> listPeliculas() throws ServicioException {
@@ -28,7 +29,7 @@ public class ServicioPeliculaImpl implements ServicioPelicula{
 		List<Pelicula> peliculas;
 		
 		try {
-			peliculas=repository.findAll();
+			peliculas=peliculaRepository.findAll();
 		}catch(Exception e) {
 			log.error("Exception", e);
 			throw new ServicioException(CodeError.ERROR_GENERAL, e);
@@ -44,7 +45,7 @@ public class ServicioPeliculaImpl implements ServicioPelicula{
 		Pelicula pelicula;
 		
 		try {
-			Optional<Pelicula> peliculaOp=repository.findById(idPelicula);
+			Optional<Pelicula> peliculaOp=peliculaRepository.findById(idPelicula);
 			if(!peliculaOp.isPresent())throw new ServicioException(CodeError.PELICULA_NOT_FOUND);
 			pelicula=peliculaOp.get();
 			
@@ -64,7 +65,7 @@ public class ServicioPeliculaImpl implements ServicioPelicula{
 		log.debug("[pelicula: "+pelicula.toString()+"]");
 		
 		try {
-			pelicula=repository.save(pelicula);
+			pelicula=peliculaRepository.save(pelicula);
 		}catch(Exception e) {
 			log.error("Exception", e);
 			throw new ServicioException(CodeError.ERROR_GENERAL,e);
@@ -78,7 +79,7 @@ public class ServicioPeliculaImpl implements ServicioPelicula{
 		log.debug("[idPelicula: "+idPelicula+"]");
 		
 			try {
-			repository.deleteById(idPelicula);
+			peliculaRepository.deleteById(idPelicula);
 		}catch(Exception e) {
 			log.error("Exception", e);
 			throw new ServicioException(CodeError.ERROR_GENERAL,e);
