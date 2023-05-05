@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,12 +19,12 @@ public class GeneroPeliculas {
 	@Column(name="GENEROPELICULA_ID")
 	private Integer id;
 
-	@ManytoOne()
-	@JoinColumn(value="GENERO_ID")
+	@ManyToOne()
+	@JoinColumn(name="GENERO_ID")
 	private Genero genero;
 	
-	@ManytoOne()
-	@JoinColumn(value="PELICULA_ID")
+	@ManyToOne()
+	@JoinColumn(name="PELICULA_ID")
 	private Pelicula pelicula;
 	
 	
@@ -39,13 +40,6 @@ public class GeneroPeliculas {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
+	
 	
 }
