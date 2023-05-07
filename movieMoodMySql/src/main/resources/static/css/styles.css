@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+
+/* Para el Navbar */
+nav.navbar {
+	height: calc(3.5rem + 20px);
+	margin-bottom: 30px;
+}
+
+#botonBuscar {
+	border: 1px solid white;
+	border-color: buttonshadow;
+	color: buttonshadow;
+}
+
+#cajaBuscar {
+	background-color: buttontext;
+	color: buttonface;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+#botonBuscar {
+  margin-right: 10px !important;
+  font-weight: bold;
+}
+
+
+
+/* Para la página de cartelera */
+.fondo {
+	background-color: #EEEEEE;
+}
+
+.margen {
+	margin-right: 20px;
+}
+
+.iconos-bajos {
+	margin-top: 10px;
+	margin-left: 4px;
+}
+
+.texto-info {
+	font-family: arial;
+	font-size: large;
+	margin-top: 12px;
+	margin-left: -25px;
+}
+
+.responsive-img {
+	max-width: 240px;
+	height: 345px;
+}
+
+#card-personalizada.card-personalizada {
+	justify-content: center;
+	align-items: center;
+	width: 260px;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom: -20px;
+	background-color: #2f2f2f;
+}
+
+.card-text {
+	max-height: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 16px;
+}
+
+.card-title{
+	font-size: 20px;
+	letter-spacing: -0.5px;
+}
+
+.row-margenes {
+	margin-left: 190px;
+	margin-right: 190px;
+}
+
+.shadow-sm {
+	background-color: #707070;
+}
+
+.card-link{
+	color: #9c9c9c;
+}
+
+
+
+/* Para la página del formulario */
+
+#recogidaDatos {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+.fondo-recogidaDatos {
+	background-color: #f6f6f6;
+	margin-top: 20px;
+}
+
+.form-select {
+	height: 200px !important; 
+}
+.labelOption {
+	margin-top: -20px;
+	font-size: 14px;
+	margin-left: -5px;
+}
+
+
+/* Para la página de pelicula */
+
