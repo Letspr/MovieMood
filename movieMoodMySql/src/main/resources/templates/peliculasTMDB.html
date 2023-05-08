@@ -8,7 +8,7 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/styles.css}">
-<title>Resultado IMDB</title>
+<title>Resultado TMDB</title>
 </head>
 <body>
 	<div th:replace="fragments/navbar"></div>
@@ -31,7 +31,7 @@
 									th:text="${pel.release_date}"></small>
 							</p>
 							<p class="card-text" th:text="${pel.overview}"></p>
-							<a th:href="@{'/busqueda/'+${pel.id}}" class="card-link">Ver</a>
+							<a th:href="@{'/busquedaTMDB/'+${pel.id}}" class="card-link">Ver</a>
 
 						</div>
 					</div>

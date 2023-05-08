@@ -16,10 +16,13 @@ import com.example.demo.entities.Genero;
 import com.example.demo.entities.Pelicula;
 import com.example.demo.entities.models.EstadoPelicula;
 import com.example.demo.exceptions.ServicioException;
-import com.example.demo.models.Template.BusquedaIMDB;
+import com.example.demo.models.Template.BusquedaTMDB;
+import com.example.demo.models.Template.ImdbBusqueda;
+import com.example.demo.models.Template.ImdbPeliculaDetalle;
 import com.example.demo.models.Template.PeliculaTMDBDetalle;
 import com.example.demo.services.interfaces.ServicioGenero;
 import com.example.demo.services.interfaces.ServicioIMDB;
+import com.example.demo.services.interfaces.ServicioTMDB;
 import com.example.demo.services.interfaces.ServicioPelicula;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,6 +36,9 @@ public class PeliculasController extends ErrorController {
 	
 	@Autowired
 	ServicioGenero servicioGenero;
+	
+	@Autowired
+	ServicioTMDB servicioTMDB;
 	
 	@Autowired
 	ServicioIMDB servicioIMDB;
@@ -107,13 +113,13 @@ public class PeliculasController extends ErrorController {
 	
 	
 	
-	//Métodos del controlador para el ServicioTMDB
+	//-------------------Métodos del controlador para el ServicioTMDB--------------------
 	
-	@PostMapping("/busqueda")
-	public String buscarPeliculas(HttpServletRequest request, @RequestParam String busqueda, Model model) throws ServicioException {
+	@PostMapping("/busquedaTMDB")
+	public String buscarPeliculasTMDB(HttpServletRequest request, @RequestParam String busqueda, Model model) throws ServicioException {
 		
-		if (request.getParameter("busquedaImdb") != null) {
-			BusquedaIMDB busquedaIMDB = servicioIMDB.busquedaPeliculas(busqueda);
+		if (request.getParameter("busquedaAPI") != null) {
+			BusquedaTMDB busquedaIMDB = servicioTMDB.busquedaPeliculas(busqueda);
 			model.addAttribute("peliculasTMDB", busquedaIMDB);
 			return "peliculasTMDB";
 		}
@@ -123,12 +129,37 @@ public class PeliculasController extends ErrorController {
 				
 	}
 	
-	@GetMapping("/busqueda/{id}")
-	public String buscarPelicula(Model model,@PathVariable Float id) {
+	@GetMapping("/busquedaTMDB/{id}")
+	public String buscarPeliculaTMDB(Model model,@PathVariable Float id) throws ServicioException {
 		
-		PeliculaTMDBDetalle pelicula = servicioIMDB.obtenerPelicula(null);
+		PeliculaTMDBDetalle pelicula = servicioTMDB.obtenerPelicula(id);
 		model.addAttribute("pelicula", pelicula);
 		return "peliculaTMDB";
+	}
+	
+	
+	//-----------------------Métodos del controlador para el ServicioIMDB------------------------
+	
+	@PostMapping("/busquedaIMDB")
+	public String buscarPeliculasIMDB(HttpServletRequest request, @RequestParam String busqueda, Model model) throws ServicioException {
+		
+		if (request.getParameter("busquedaAPI") != null) {
+			ImdbBusqueda busquedaIMDB = servicioIMDB.busquedaPeliculas(busqueda);
+			model.addAttribute("peliculasIMDB", busquedaIMDB);
+			return "peliculasIMDB";
+		}
+		List<Pelicula> misPeliculas = servicioPelicula.listPeliculaQuery(busqueda);
+		model.addAttribute("peliculas", misPeliculas);
+		return "peliculas";
+				
+	}
+	
+	@GetMapping("/busquedaIMDB/{id}")
+	public String buscarPeliculaIMDB(Model model,@PathVariable String id) throws ServicioException {
+		
+		ImdbPeliculaDetalle pelicula = servicioIMDB.obtenerPelicula(id);
+		model.addAttribute("pelicula", pelicula);
+		return "peliculaIMDB";
 	}
 
 }

@@ -3,17 +3,19 @@ package com.example.demo.models.Template;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BusquedaIMDB implements Serializable {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class BusquedaTMDB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private float page;
-	ArrayList<PeliculaIMDBResumen> results = new ArrayList<PeliculaIMDBResumen>();
+	ArrayList<PeliculaTMDBResumen> results = new ArrayList<PeliculaTMDBResumen>();
 	private float total_pages;
 	private float total_results;
 
-	public BusquedaIMDB() {
-		super();
+	public BusquedaTMDB() {
 	}
 
 	public float getPage() {
@@ -24,11 +26,11 @@ public class BusquedaIMDB implements Serializable {
 		this.page = page;
 	}
 
-	public ArrayList<PeliculaIMDBResumen> getResults() {
+	public ArrayList<PeliculaTMDBResumen> getResults() {
 		return results;
 	}
 
-	public void setResults(ArrayList<PeliculaIMDBResumen> results) {
+	public void setResults(ArrayList<PeliculaTMDBResumen> results) {
 		this.results = results;
 	}
 

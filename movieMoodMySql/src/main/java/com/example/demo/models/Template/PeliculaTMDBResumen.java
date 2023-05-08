@@ -3,7 +3,7 @@ package com.example.demo.models.Template;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PeliculaIMDBResumen implements Serializable {
+public class PeliculaTMDBResumen implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +23,7 @@ public class PeliculaIMDBResumen implements Serializable {
 	 private float vote_count;
 
 	 
-	public PeliculaIMDBResumen() {
+	public PeliculaTMDBResumen() {
 		super();
 		
 	}
