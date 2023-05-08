@@ -16,7 +16,8 @@ import com.example.demo.entities.Genero;
 import com.example.demo.entities.Pelicula;
 import com.example.demo.entities.models.EstadoPelicula;
 import com.example.demo.exceptions.ServicioException;
-import com.example.demo.models.BusquedaIMDB;
+import com.example.demo.models.Template.BusquedaIMDB;
+import com.example.demo.models.Template.PeliculaTMDBDetalle;
 import com.example.demo.services.interfaces.ServicioGenero;
 import com.example.demo.services.interfaces.ServicioIMDB;
 import com.example.demo.services.interfaces.ServicioPelicula;
@@ -60,7 +61,7 @@ public class PeliculasController extends ErrorController {
 		model.addAttribute("pelicula", new Pelicula());
 		model.addAttribute("generos", generos);
 		model.addAttribute("pagina", "crear");
-		model.addAttribute("estado", EstadoPelicula.ninguno);
+		model.addAttribute("estado", EstadoPelicula.ninguno_crear);
 		return "formulario";
 
 	}
@@ -81,7 +82,7 @@ public class PeliculasController extends ErrorController {
 		List<Genero> generos = servicioGenero.listGeneros();
 		model.addAttribute("pelicula", pelicula);
 		model.addAttribute("generos", generos);
-		model.addAttribute("estado", EstadoPelicula.ninguno);
+		model.addAttribute("estado", EstadoPelicula.ninguno_editar);
 
 		return "formulario";
 	}
@@ -109,9 +110,9 @@ public class PeliculasController extends ErrorController {
 	//Métodos del controlador para el ServicioTMDB
 	
 	@PostMapping("/busqueda")
-	public String buscarPeliculas(HttpServletRequest request,@RequestParam String busqueda, Model model) throws ServicioException {
+	public String buscarPeliculas(HttpServletRequest request, @RequestParam String busqueda, Model model) throws ServicioException {
 		
-		if (request.getParameter("typeImdb") != null) {
+		if (request.getParameter("busquedaImdb") != null) {
 			BusquedaIMDB busquedaIMDB = servicioIMDB.busquedaPeliculas(busqueda);
 			model.addAttribute("peliculasTMDB", busquedaIMDB);
 			return "peliculasTMDB";
@@ -119,8 +120,15 @@ public class PeliculasController extends ErrorController {
 		List<Pelicula> misPeliculas = servicioPelicula.listPeliculaQuery(busqueda);
 		model.addAttribute("peliculas", misPeliculas);
 		return "peliculas";
+				
+	}
+	
+	@GetMapping("/busqueda/{id}")
+	public String buscarPelicula(Model model,@PathVariable Float id) {
 		
-		
+		PeliculaTMDBDetalle pelicula = servicioIMDB.obtenerPelicula(null);
+		model.addAttribute("pelicula", pelicula);
+		return "peliculaTMDB";
 	}
 
 }

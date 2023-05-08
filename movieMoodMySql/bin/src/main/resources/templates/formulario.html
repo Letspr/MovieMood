@@ -8,10 +8,8 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/styles.css}">
-<title th:if="${estado.name()=='creado'}">Crear película</title>
-<title th:if="${estado.name()=='editado'}">Editar película</title>
-<title th:if="${estado.name()=='ninguno_crear'}">Crear película</title>
-<title th:if="${estado.name()=='ninguno_editar'}">Editar película</title>
+<title th:if="${pelicula}">Crear película</title>
+<!-- <title th:unless="${pelicula}">Modificar película</title> -->
 </head>
 <body>
 	<div th:replace="fragments/navbar"></div>
@@ -54,28 +52,9 @@
 								<option th:each="genero : ${generos}" th:value="${genero.id}"
 									th:text="${genero.nombre}"
 									th:selected="${pelicula.generos != null and  pelicula.generos.contains(genero)}"></option>
+
 							</select>
 						</div>
-
-
-<!-- 	--------------- Aproximación a selección de géneros con caja colapsada y check box -------------------- -->
-<!-- 						<div> -->
-<!-- 							<button class="btn btn-primary" type="button" -->
-<!-- 								data-bs-toggle="collapse" data-bs-target="#generosCollapse" -->
-<!-- 								aria-expanded="false" aria-controls="generosCollapse"> -->
-<!-- 								Selecciona los géneros</button> -->
-<!-- 							<div class="collapse" id="generosCollapse"> -->
-<!-- 								<div class="form-check"> -->
-<!-- 									<th:block th:each="genero : ${generos}"> -->
-<!-- 										<input class="form-check-input" type="checkbox" name="generos" -->
-<!-- 											id="generoId" th:value="${genero.id}" -->
-<!-- 											th:checked="${pelicula.generos != null and pelicula.generos.contains(genero)}" /> -->
-<!-- 										<label class="form-check-label" for="generoId" -->
-<!-- 											th:text="${genero.nombre}"></label> -->
-<!-- 									</th:block> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 
 						<div class="form-floating mb-3">
 							<input type="text" th:field="*{urlCaratula}" class="form-control">

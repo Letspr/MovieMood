@@ -1,4 +1,4 @@
-package com.example.demo.models;
+package com.example.demo.models.Template;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -51,5 +51,13 @@ public class BusquedaIMDB implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "BusquedaIMDB [page=" + page + ", results=" + results + ", total_pages=" + total_pages
+				+ ", total_results=" + total_results + "]";
+	}
+	
+	
 
 }

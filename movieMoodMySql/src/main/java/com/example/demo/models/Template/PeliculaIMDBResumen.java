@@ -1,4 +1,4 @@
-package com.example.demo.models;
+package com.example.demo.models.Template;
 
 import java.io.Serializable;
 import java.util.ArrayList;

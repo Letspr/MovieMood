@@ -2,5 +2,5 @@ package com.example.demo.entities.models;
 
 public enum EstadoPelicula {
 
-	ninguno, creado, editado
+	ninguno_crear, ninguno_editar, creado, editado
 }
