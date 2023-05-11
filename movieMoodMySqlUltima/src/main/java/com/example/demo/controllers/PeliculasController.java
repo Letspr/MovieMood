@@ -163,6 +163,17 @@ public class PeliculasController extends ErrorController {
 	}
 	
 	
+	@GetMapping("/guardarMM/{id}")
+	public String guardarEnNN(Model model, @PathVariable String id) throws ServicioException{
+		String parate = "parate";
+		ImdbPeliculaDetalle pelicula = servicioIMDB.obtenerPelicula(id);
+		PeliculaMM peliculaMM=servicioIMDB.toPeliculaMM(pelicula);
+		model.addAttribute("pelicula", peliculaMM);
+		return "formularioIMDB";
+	}
+	
+	
+	
 //	@GetMapping("/busquedaIMDB/{id}")
 //	public String buscarPeliculaIMDB(HttpServletRequest request, Model model, @PathVariable String id) throws ServicioException {
 //		

@@ -11,7 +11,7 @@
 <title>Resultado IMDB</title>
 </head>
 <body>
-	<div th:replace="fragments/navbar"></div>
+	<div th:replace="~{fragments/navbar}"></div>
 
 
 	<main>
@@ -22,7 +22,7 @@
 						class="card h-100 text-bg-dark mb-3 shadow-sm card-personalizada"
 						id="card-personalizada">
 						<img
-							th:src="@{''+${pel.image}}"
+							th:src="@{${pel.image}}"
 							class="card-img-top responsive-img">
 						<div class="card-body">
 							<h5 class="card-title text-start" th:text="${pel.title}"></h5>

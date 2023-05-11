@@ -1,4 +1,4 @@
-INSERT INTO GENEROS (genero_id, nombre) VALUES 
+INSERT INTO moviemood.GENEROS (genero_id, nombre) VALUES 
 (1, 'Comedia'),
 (2, 'Acción'),
 (12, 'Aventura'),

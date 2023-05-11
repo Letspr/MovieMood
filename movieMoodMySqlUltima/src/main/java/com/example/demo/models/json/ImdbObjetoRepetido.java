@@ -2,6 +2,9 @@ package com.example.demo.models.json;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ImdbObjetoRepetido implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -31,7 +34,6 @@ public class ImdbObjetoRepetido implements Serializable{
 	public String toString() {
 		return "ImdbObjetoRepetido [id=" + id + ", name=" + name + "]";
 	}
-	
-	
+		
 	
 }

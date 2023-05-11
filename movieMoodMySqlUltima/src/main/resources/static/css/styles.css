@@ -28,7 +28,6 @@ nav.navbar {
 }
 
 
-
 /* Para la página de cartelera */
 .fondo {
 	background-color: #EEEEEE;
@@ -112,11 +111,39 @@ nav.navbar {
 .form-select {
 	height: 200px !important; 
 }
-.labelOption {
-	margin-top: -20px;
-	font-size: 14px;
-	margin-left: -5px;
+
+/* .labelOption { */
+/* 	margin-top: -20px; */
+/* 	font-size: 14px; */
+/* 	margin-left: -5px; */
+/* } */
+
+.sin-punto {
+  list-style-type: none;
 }
+
+ul{
+	margin-bottom: 10px !important; 
+    column-count: 3;	
+
+    overflow-x: auto;
+}
+
+
+.label-lista {
+    font-size: 14.2px;
+    color: gray;
+    padding-top: 10px !important; 
+    margin-bottom: -20px !important;
+    padding-bottom: -20px;
+}
+
+/* .div-lista{ */
+/* 	padding-top: 30px; */
+/* } */
+
+
+
 
 
 /* Para la página de pelicula */

@@ -82,6 +82,9 @@ public class ServicioIMDBImpl implements ServicioIMDB {
 		peliculaMM.setDirector(peliculaIMDB.getDirectoresName());
 		peliculaMM.setSinopsis(peliculaIMDB.getPlotLocal());
 		peliculaMM.setUrlCaratula(peliculaIMDB.getImage());
+		
+		log.debug("[peliculaMM: "+peliculaMM+"]");
+		
 		return peliculaMM;
 		
 		} catch(Exception e) {

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<div th:replace="fragments/navbar"></div>
+	<div th:replace="~{fragments/navbar}"></div>
 
 	<main>
 
@@ -31,7 +31,8 @@
 								<small class="text-body-secondary" th:text="${pelicula.getDirectoresName + ' ' + pelicula.year}"></small>
 							</p>
 							<p class="card-text" th:text="${pelicula.plotLocal}"></p>
-							<a th:href="@{'/busquedaIMDB/'+${pelicula.id}}" name="guardarMM" value="guardar" class="btn btn-dark">Añadir a MoovieMood</a>
+							<a th:href="@{'/guardarMM/'+${pelicula.id}}" class="btn btn-dark">Añadir a MoovieMood</a>
+<!-- 																			name="guardarMM" value="guardar" 			 -->
 						</div>
 					</div>
 				</div>

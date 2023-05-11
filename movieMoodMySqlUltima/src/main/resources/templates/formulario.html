@@ -10,12 +10,14 @@
 <link rel="stylesheet" th:href="@{/css/styles.css}">
 <title th:if="${estado.name()=='creado'}">Crear película</title>
 <title th:if="${estado.name()=='editado'}">Editar película</title>
-<title th:if="${estado.name()=='ninguno_editar'}">Editar película</title>
+<title th:if="${estado.name()=='ninguno_editar'}">Editar
+	película</title>
 <title th:if="${estado.name()=='ninguno_crear'}">Crear película</title>
-<title th:if="${estado.name()=='ninguno_añadir'}">Añadir película</title>
+<title th:if="${estado.name()=='ninguno_añadir'}">Añadir
+	película</title>
 </head>
 <body>
-	<div th:replace="fragments/navbar"></div>
+	<div th:replace="~{fragments/navbar}"></div>
 
 	<main>
 
@@ -47,36 +49,29 @@
 							<label for="sinopsis">Sinopsis</label>
 						</div>
 
-						<div class="form-floating mb-3">
-							<select name="generos" id="generoId" class="form-select" multiple
+						<div class="form-floating mb-3 form-control caja-select">
+							<label for="generos" class="form-control label-lista">Selecciona
+								los géneros</label>
+							<div class="div-lista">
+								<ul>
+									<li th:each="genero : ${generos}" class="sin-punto"><input
+										input type="checkbox" id="generos" name="generos"
+										th:checked="${pelicula.generos != null and  pelicula.generos.contains(genero)}"
+										th:value="${genero.id}"> <label
+										th:text="${genero.nombre}"
+										>Nombre Genero</label></li>
+									</ul>
+								</div>
+						</div>
+
+						<!--  select name="generos" id="generoId" class="form-select" multiple
 								aria-label="multiple select example">
 								<option disabled="disabled" class="labelOption">Selecciona
 									los géneros</option>
 								<option th:each="genero : ${generos}" th:value="${genero.id}"
 									th:text="${genero.nombre}"
 									th:selected="${pelicula.generos != null and  pelicula.generos.contains(genero)}"></option>
-							</select>
-						</div>
-
-
-<!-- 	--------------- Aproximación a selección de géneros con caja colapsada y check box -------------------- -->
-<!-- 						<div> -->
-<!-- 							<button class="btn btn-primary" type="button" -->
-<!-- 								data-bs-toggle="collapse" data-bs-target="#generosCollapse" -->
-<!-- 								aria-expanded="false" aria-controls="generosCollapse"> -->
-<!-- 								Selecciona los géneros</button> -->
-<!-- 							<div class="collapse" id="generosCollapse"> -->
-<!-- 								<div class="form-check"> -->
-<!-- 									<th:block th:each="genero : ${generos}"> -->
-<!-- 										<input class="form-check-input" type="checkbox" name="generos" -->
-<!-- 											id="generoId" th:value="${genero.id}" -->
-<!-- 											th:checked="${pelicula.generos != null and pelicula.generos.contains(genero)}" /> -->
-<!-- 										<label class="form-check-label" for="generoId" -->
-<!-- 											th:text="${genero.nombre}"></label> -->
-<!-- 									</th:block> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+							</select -->
 
 						<div class="form-floating mb-3">
 							<input type="text" th:field="*{urlCaratula}" class="form-control">
@@ -104,7 +99,8 @@
 								<div class="col-5 texto-info" th:if="${estado.name()=='creado'}">
 									<p>Película creada correctamente</p>
 								</div>
-								<div class="col-5 texto-info" th:if="${estado.name()=='añadido'}">
+								<div class="col-5 texto-info"
+									th:if="${estado.name()=='añadido'}">
 									<p>Película añadida correctamente</p>
 								</div>
 
