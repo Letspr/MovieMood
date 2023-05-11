@@ -1,8 +1,12 @@
 package com.example.demo.models.json;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ImdbBusqueda {
+public class ImdbBusqueda implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String searchType;
 	private String expression;
 	ArrayList<ImdbPeliculaResumen> results = new ArrayList<ImdbPeliculaResumen>();

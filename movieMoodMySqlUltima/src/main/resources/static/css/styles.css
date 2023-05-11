@@ -63,6 +63,7 @@ nav.navbar {
 	padding-top: 10px;
 	padding-bottom: -20px;
 	background-color: #2f2f2f;
+	box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5) !important;
 }
 
 .card-text {
@@ -138,13 +139,24 @@ ul{
     padding-bottom: -20px;
 }
 
-/* .div-lista{ */
-/* 	padding-top: 30px; */
-/* } */
+
+/* Para la página notFound */
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: transparent;
+  border: none;
+}
+
+.not-found img {
+  width: 70%;
+  height: 95%;
+  margin-top: -25px;
+/*   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); */
+}
 
 
-
-
-
-/* Para la página de pelicula */
 

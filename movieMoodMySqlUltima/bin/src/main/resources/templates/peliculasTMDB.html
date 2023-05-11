@@ -8,7 +8,7 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/styles.css}">
-<title>Resultado IMDB</title>
+<title>Resultado TMDB</title>
 </head>
 <body>
 	<div th:replace="fragments/navbar"></div>
@@ -17,12 +17,12 @@
 	<main>
 		<div class="p-5 fondo">
 			<div class="row row-cols-1 row-cols-md-4 row-margenes g-4">
-				<div th:each="pel:${peliculasTMDB.results}"
-					class="col">
+				<div th:each="pel:${peliculasTMDB.results}" class="col">
 					<div
 						class="card h-100 text-bg-dark mb-3 shadow-sm card-personalizada"
 						id="card-personalizada">
-						<img th:src="@{'https://image.tmdb.org/t/p/w500'+${pel.poster_path}}"
+						<img
+							th:src="@{'https://image.tmdb.org/t/p/w500'+${pel.poster_path}}"
 							class="card-img-top responsive-img">
 						<div class="card-body">
 							<h5 class="card-title" th:text="${pel.title}"></h5>
@@ -31,7 +31,7 @@
 									th:text="${pel.release_date}"></small>
 							</p>
 							<p class="card-text" th:text="${pel.overview}"></p>
-							<a th:href="@{'/'+${pel.id}}" class="card-link">Ver</a>
+							<a th:href="@{'/busquedaTMDB/'+${pel.id}}" class="card-link">Ver</a>
 
 						</div>
 					</div>

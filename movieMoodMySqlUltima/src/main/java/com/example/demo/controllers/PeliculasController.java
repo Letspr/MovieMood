@@ -146,11 +146,11 @@ public class PeliculasController extends ErrorController {
 		if (request.getParameter("busquedaAPI") != null) {
 			ImdbBusqueda busquedaIMDB = servicioIMDB.busquedaPeliculas(busqueda);
 			model.addAttribute("peliculasIMDB", busquedaIMDB);
-			return "peliculasIMDB";
+			return busquedaIMDB.getResults().size() >0?"peliculasIMDB":"notFoundIMDB";
 		}
 		List<PeliculaMM> misPeliculas = servicioPelicula.listPeliculaQuery(busqueda);
 		model.addAttribute("peliculas", misPeliculas);
-		return "peliculas";
+		return misPeliculas.size() >0? "peliculas": "notFound";
 				
 	}
 	
@@ -165,7 +165,6 @@ public class PeliculasController extends ErrorController {
 	
 	@GetMapping("/guardarMM/{id}")
 	public String guardarEnNN(Model model, @PathVariable String id) throws ServicioException{
-		String parate = "parate";
 		ImdbPeliculaDetalle pelicula = servicioIMDB.obtenerPelicula(id);
 		PeliculaMM peliculaMM=servicioIMDB.toPeliculaMM(pelicula);
 		model.addAttribute("pelicula", peliculaMM);
